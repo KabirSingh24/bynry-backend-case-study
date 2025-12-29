@@ -83,9 +83,9 @@ Critical for a multi-tenant B2B SaaS system.
 
 ---
 
-## 3. Corrected Implementation (Spring Boot – Java)
+### 3. Corrected Implementation (Spring Boot – Java)
 
-```java
+
 @PostMapping("/api/products")
 @Transactional
 public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request) {
@@ -134,7 +134,9 @@ public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request
                 .body("Failed to create product");
     }
 }
-Part 2: Database Design
+---
+
+## Part 2: Database Design
 1. Schema Design
 Company
 
