@@ -4,12 +4,13 @@
 
 **Candidate:** Kabir Singh  
 **Role Applied:** Backend Engineering Intern  
-**Primary Backend Stack:** Java, Spring Boot  
+**Primary Backend Stack:** Java, Spring Boot 
+Note: Java/Spring Boot is used to demonstrate my primary backend expertise; concepts are transferable to Flask/Python.
 
 ---
 
 ## Notes
-- Original problem statement was provided in Flask / Python
+- Original problem statement was provided in Flask / Python; implementation is adapted to Spring Boot while preserving business logic.
 - Solution is implemented in Spring Boot (Java) as my primary backend stack
 - Business logic remains framework-agnostic
 - Explicit assumptions are documented due to intentionally incomplete requirements
@@ -54,7 +55,7 @@ StockFlow is a B2B inventory management platform that enables small businesses t
 
 ```java
 @PostMapping("/api/products")
-@Transactional
+@Transactional // @Transactional ensures atomicity between Product and Inventory creation
 public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request) {
 
     if (request.getName() == null || request.getSku() == null || request.getPrice() == null) {
