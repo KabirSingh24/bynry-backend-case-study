@@ -284,7 +284,7 @@ public ResponseEntity<?> getLowStockAlerts(@PathVariable Long companyId) {
 
 ---
 
-##Additional Information
+## Additional Information
 
 • This case study is submitted as part of the Backend Engineering Intern application at Bynry Inc.
 • The solution is intentionally designed to be framework-agnostic, with implementation demonstrated using Java & Spring Boot.
@@ -299,7 +299,7 @@ Access: Anyone with the link (Viewer)
 
 ---
 
-##Final Notes
+## Final Notes
 
 • This submission focuses on correctness, scalability, and real-world SaaS considerations.
 • Design decisions were made with multi-tenancy, data integrity, and future extensibility in mind.
