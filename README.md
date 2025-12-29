@@ -284,4 +284,26 @@ public ResponseEntity<?> getLowStockAlerts(@PathVariable Long companyId) {
 
 ---
 
-Thank you for reviewing my submission.
+##Additional Information
+
+• This case study is submitted as part of the Backend Engineering Intern application at Bynry Inc.
+• The solution is intentionally designed to be framework-agnostic, with implementation demonstrated using Java & Spring Boot.
+• All assumptions have been explicitly documented due to intentionally incomplete requirements.
+• I am comfortable implementing the same solution in Flask / Python if required.
+• I look forward to discussing design decisions, trade-offs, and improvements during the live discussion.
+
+Case Study Document Link
+[Doc_Link] (https://docs.google.com/document/d/1-t-3LmWOm4NQzMl0NTQSNz6WN4V-W8dO6skm8IxS054/edit?usp=sharing)
+
+Access: Anyone with the link (Viewer)
+
+---
+
+##Final Notes
+
+• This submission focuses on correctness, scalability, and real-world SaaS considerations.
+• Design decisions were made with multi-tenancy, data integrity, and future extensibility in mind.
+• Trade-offs and alternative approaches can be discussed during the live interview.
+• Thank you for reviewing my submission.
+
+
