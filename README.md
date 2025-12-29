@@ -58,17 +58,20 @@ StockFlow is a B2B inventory management platform that enables small businesses t
 @Transactional // @Transactional ensures atomicity between Product and Inventory creation
 public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request) {
 
+    // Input validation
     if (request.getName() == null || request.getSku() == null || request.getPrice() == null) {
         return ResponseEntity.badRequest()
                 .body("Name, SKU, and price are required");
     }
 
+    // SKU uniqueness check
     if (productRepository.existsBySku(request.getSku())) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body("SKU already exists");
     }
 
     try {
+        // Create product (not tied directly to a warehouse)
         Product product = new Product();
         product.setName(request.getName());
         product.setSku(request.getSku());
@@ -77,6 +80,7 @@ public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request
 
         productRepository.save(product);
 
+        // Create inventory entry for a warehouse
         Inventory inventory = new Inventory();
         inventory.setProduct(product);
         inventory.setWarehouseId(request.getWarehouseId());
@@ -93,6 +97,7 @@ public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request
                 ));
 
     } catch (Exception e) {
+        // Rollback handled automatically by @Transactional
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("Failed to create product");
     }
@@ -221,11 +226,12 @@ public ResponseEntity<?> getLowStockAlerts(@PathVariable Long companyId) {
 
     for (Inventory inventory : inventories) {
         Product product = inventory.getProduct();
+        // Skip products without recent sales
 
         if (!salesRepository.hasRecentSales(product.getId(), 30)) {
             continue;
         }
-
+        // Check low stock condition
         if (inventory.getQuantity() < product.getLowStockThreshold()) {
             Supplier supplier = product.getPrimarySupplier();
 
